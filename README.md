@@ -1,10 +1,10 @@
-Task 1: Graham, 
+Task 1: James, 
 Status:
 
-Task 2:
+Task 2: Graham, 
 Status:
 
-Task 3:
+Task 3: Wyatt, 
 Status:
 
 Task 4:
