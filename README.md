@@ -2,7 +2,7 @@ Task 1: James, Andrew
 Status: Complete
 
 Task 2: Graham, 
-Status:
+Status: Complete
 
 Task 3: Wyatt, 
 Status:
