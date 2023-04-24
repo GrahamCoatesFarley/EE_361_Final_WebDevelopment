@@ -5,7 +5,7 @@ Task 2: Graham,
 Status: Complete
 
 Task 3: Wyatt, 
-Status:
+Status: Complete
 
 Task 4: Andrew
 Status:
