@@ -233,11 +233,11 @@ def useKeystrokesDynamics(request, ip_address, username, pwd, phone, email, isTr
                     Users.objects.filter(memberID=attempt_user).update(otp=otp)
                     # Set expiration
                     Users.objects.filter(memberID=attempt_user).update(expire_at=int(time.time() + 600))
-                    sendSMS("The first half of your login verification code is : " + str(
-                        otp1) + ". It expires in 10 minutes. Please ignore if you did not request for this. SOTERIA",
+                    sendSMS("Your login verification code is : " + str(
+                        otp) + ". It expires in 10 minutes. Please ignore if you did not request for this. SOTERIA",
                             phone)
-                    context_mail = {'fn': user.first_name, 'otp2': otp2, 'otp': True}
-                    SendCustomEmail([email], context_mail, "Verification Required")
+                    # context_mail = {'fn': user.first_name, 'otp2': otp2, 'otp': True}
+                    # SendCustomEmail([email], context_mail, "Verification Required")
                     context = {'enterOTP': True, 'split': True}
                     url = 'home.html'
                     return render(request, url, context)
@@ -279,11 +279,11 @@ def useKeystrokesDynamics(request, ip_address, username, pwd, phone, email, isTr
                 Users.objects.filter(memberID=attempt_user).update(otp=otp)
                 # Set expiration
                 Users.objects.filter(memberID=attempt_user).update(expire_at=int(time.time() + 600))
-                sendSMS("The first half of your login verification code is : " + str(
-                    otp1) + ". It expires in 10 minutes. Please ignore if you did not request for this. SOTERIA",
+                sendSMS("Your login verification code is : " + str(
+                    otp) + ". It expires in 10 minutes. Please ignore if you did not request for this. SOTERIA",
                         phone)
-                context_mail = {'fn': user.first_name, 'otp2': otp2, 'otp': True}
-                SendCustomEmail([email], context_mail, "Verification Required")
+                # context_mail = {'fn': user.first_name, 'otp2': otp2, 'otp': True}
+                # SendCustomEmail([email], context_mail, "Verification Required")
                 context = {'enterOTP': True, 'split': True}
                 url = 'home.html'
                 return render(request, url, context)
@@ -994,10 +994,10 @@ def forgotpwd3(request):
                     # Set expiration
                     Users.objects.filter(memberID=attempt_user).update(expire_at=int(time.time() + 600))
                     sendSMS(
-                        "The first half of your account recovery verification code is : " + str(otp1) +
+                        "Your account recovery verification code is : " + str(otp) +
                         ". It expires in 10 minutes. Please ignore if you did not request for this. SOTERIA", phone)
-                    context_mail = {'fn': user_details.first_name, 'otp2': otp2, 'otp': True}
-                    SendCustomEmail([user_details.mail], context_mail, "Verification Required")
+                    # context_mail = {'fn': user_details.first_name, 'otp2': otp2, 'otp': True}
+                    # SendCustomEmail([user_details.mail], context_mail, "Verification Required")
                     context = {'enterOTP': True, 'split': True}
                     return render(request, 'forgotpwd3.html', context)
             else:
@@ -1038,10 +1038,10 @@ def forgotpwd3(request):
                 # Set expiration
                 Users.objects.filter(memberID=attempt_user).update(
                     expire_at=int(time.time() + 600))
-                sendSMS("The first half of your account recovery verification code is : " + str(otp1) +
+                sendSMS("The first half of your account recovery verification code is : " + str(otp) +
                         ". It expires in 10 minutes. Please ignore if you did not request for this. SOTERIA", phone)
-                context_mail = {'fn': user_details.first_name, 'otp2': otp2, 'otp': True}
-                SendCustomEmail([user_details.mail], context_mail, "Verification Required")
+                # context_mail = {'fn': user_details.first_name, 'otp2': otp2, 'otp': True}
+                # SendCustomEmail([user_details.mail], context_mail, "Verification Required")
                 context = {'enterOTP': True, 'split': True}
                 return render(request, 'forgotpwd3.html', context)
 
