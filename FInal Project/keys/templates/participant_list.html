@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<section class="main-container">
+  <div class="title">
+    <h1>List of Participants</h1>
+  </div>
+  <div class="container">
+    <div class="shadow-container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="welcome-text">
+            <br><h6 class="text-center">Participants statistics and auto email sent to engage subjects</h6>
+            <br>
+            <div class="row">
+              <div class="col-sm-6" style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                <a class="btn back-button" href="/" style="height: 10%; width: 50%;"
+                   title="back to forgotpwd screen1">Go to login</a>
+              </div>
+              <div class="col-sm-6" style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                <a class="text-center btn" id="send_reminder_email" name="send_reminder_email"
+                   style="height: 10%; width: 55%;">Send Reminder Email</a>
+              </div>
+            </div>
+          </div>
+          <table>
+            <tr>
+              <th>MemberID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Total Login Attempts</th>
+              <th>Weekly login left</th>
+              <th>Total AR Attempts</th>
+              <th>Weekly AR left</th>
+            </tr>
+            {% for user in object_userlist %}
+            <tr>
+              <td>{{ user.memberID }}</td>
+              <td>{{ user.first_name }}</td>
+              <td>{{ user.last_name }}</td>
+              <td>{{ user.login_attempt }}</td>
+              <td>{{ user.login_weekly_task_left }}</td>
+              <td>{{ user.AR_attempt }}</td>
+              <td>{{ user.AR_weekly_task_left }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+      const sendReminder = document.querySelector('#send_reminder_email');
+      sendReminder.onclick = function () {
+          var URL = "{% url 'soteria:sendUserReminder' %}"
+          var data = '';
+          $.post(URL, data);
+      };
+  </script>
+
+</section>
+{% endblock %}

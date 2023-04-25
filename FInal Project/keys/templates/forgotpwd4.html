@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="main-container">
+  <div class="title">
+    <h1 onmouseenter="mousee('mouse_enter', 'text', 'title', 'recovery_step4')"
+        onmouseleave="mousee('mouse_leave', 'text', 'title', 'recovery_step4')">
+      Forgot Password</h1>
+  </div>
+  <div class="container">
+    <div class="step-container forgot-pwd-steps">
+      <div class='step-border'></div>
+      <div class="row">
+        <div class="col-xs-4 col-sm-4"
+             onmouseenter="mousee('mouse_enter', 'text', 'step_count1', 'recovery_step4')"
+             onmouseleave="mousee('mouse_leave', 'text', 'step_count1', 'recovery_step4')">
+          <div class="step step1 active-step">
+            <p>STEP</p>
+            <p>1 of 3</p>
+          </div>
+          <h4 class="active-step-text text-left">Personal Information</h4>
+        </div>
+        <div class="col-xs-4 col-sm-4"
+             onmouseenter="mousee('mouse_enter', 'text', 'step_count2', 'recovery_step4')"
+             onmouseleave="mousee('mouse_leave', 'text', 'step_count2', 'recovery_step4')">
+          <div class="step step2 active-step">
+            <p>STEP</p>
+            <p>2 of 3</p>
+          </div>
+          <h4 class="text-center active-step-text">Verify Identity</h4>
+        </div>
+        <div class="col-xs-4 col-sm-4"
+             onmouseenter="mousee('mouse_enter', 'text', 'step_count3', 'recovery_step4')"
+             onmouseleave="mousee('mouse_leave', 'text', 'step_count3', 'recovery_step4')">
+          <div class="step step3 active-step pull-right">
+            <p>STEP</p>
+            <p>3 of 3</p>
+          </div>
+          <h4 class="text-right active-step-text">Choose New Password</h4>
+        </div>
+      </div>
+    </div>
+    <div class="shadow-container">
+      <div class="step1-form">
+        <div class="row">
+          <div class="col-sm-12">
+            {% if access_denied %}
+            <div class="welcome-text">
+              <h2 class="text-center">Access Denied</h2>
+            </div>
+            {% else %}
+            <span class='req-text'>*Required</span>
+            <div class="welcome-text">
+              <h2 class="text-center"
+                  onmouseenter="mousee('mouse_enter', 'text', 'subheading', 'recovery_step4')"
+                  onmouseleave="mousee('mouse_leave', 'text', 'subheading', 'recovery_step4')"
+              >Create New Password</h2>
+              <br>
+              <p class="text-center">Note: Reuse of current password is ALLOWED.</p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% if access_denied %}
+        <p class="text-center">{{message}}</p>
+        <br>
+        <div class="pwd-step3-container">
+          <div class="col-sm-10">
+            <a class="btn padding" href="../../" title="Go home">Home</a>
+          </div>
+        </div>
+        {% else %}
+        <p class="text-center" style="color:red">{{message}}</p>
+        <br>
+        <div class="pwd-step3-container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div>
+                <p style="color:red">Password Requirements:</p>
+                <!--                                <br>-->
+                <ol>
+                  <li ; style="font-size:13px"> &bull; CAN be the same as current password</li>
+                  <li ; style="font-size:13px">&bull; Must not be the same as your username</li>
+                  <li ; style="font-size:13px">&bull; Minimum of 8 characters</li>
+                  <li ; style="font-size:13px">&bull; Minimum of 1 number and 1 letter</li>
+                </ol>
+              </div>
+              <br>
+              <form action="success2" autocomplete="off" class="form-horizontal pwdStep3Form" method="post"
+                    name="pwdStep3Form" novalidate>
+                {% csrf_token %}
+                <div class="row input-margin col-sm-12" style="display: flex; justify-content: center;">
+                  <div class="input-margin col-sm-6" ondrop="return false" onpaste="return false;">
+                    <input autocomplete="disabled" class="form-field" id="password" name="password"
+                           ondrag="return false" ondrop="return false"
+                           onkeydown="myFunction2(event, 0, 'password')" onkeyup="myFunction2(event, 1, 'password')"
+                           onmousedown="mouseDownUp(event, 'down', 'input', 'password', 'recovery_step4')"
+                           onmouseenter="mousee('mouse_enter', 'input', 'password', 'recovery_step4')"
+                           onmouseleave="mousee('mouse_leave', 'input', 'password', 'recovery_step4')"
+                           onmouseup="mouseDownUp(event, 'up', 'input', 'password', 'recovery_step4')"
+                           onpaste="return false;" placeholder="New Password" required
+                           type="password">
+                  </div>
+                  <div class="input-margin col-sm-6" ondrop="return false" onpaste="return false;">
+                    <input autocomplete="disabled" class="form-field" id="reTypePwd1"
+                           name="reTypePwd"
+                           ondrag="return false" ondrop="return false"
+                           onkeydown="myFunction2(event, 0, 'reTypePwd')" onkeyup="myFunction2(event, 1, 'reTypePwd')"
+                           onmousedown="mouseDownUp(event, 'down', 'input', 'retype_password1', 'recovery_step4')"
+                           onmouseenter="mousee('mouse_enter', 'input', 'retype_password1', 'recovery_step4')"
+                           onmouseleave="mousee('mouse_leave', 'input', 'retype_password1', 'recovery_step4')"
+                           onmouseup="mouseDownUp(event, 'up', 'input', 'retype_password1', 'recovery_step4')"
+                           onpaste="return false;" placeholder="Re-type New Password" required
+                           type="password">
+                  </div>
+                </div>
+
+                <div class="form-group row secure-btn">
+                  <div class="col-sm-5"> <!--onclick="history.back()"-->
+                    <a class="btn btn-large" href="../../"
+                       onmousedown="mouseDownUp(event, 'down', 'button', 'back', 'recovery_step4')"
+                       onmouseenter="mousee('mouse_enter', 'button', 'back', 'recovery_step4')"
+                       onmouseleave="mousee('mouse_leave', 'button', 'back', 'recovery_step4')"
+                       onmouseup="mouseDownUp(event, 'up', 'button', 'back', 'recovery_step4')"
+                       title="back to forgotpwd screen2"
+                    >Home</a>
+                  </div>
+                  <div class="col-sm-5">
+                    <button class="btn btn-large"
+                            onmousedown="mouseDownUp(event, 'down', 'button', 'continue', 'recovery_step4')"
+                            onmouseenter="mousee('mouse_enter', 'button', 'continue', 'recovery_step4')"
+                            onmouseleave="mousee('mouse_leave', 'button', 'continue', 'recovery_step4')"
+                            onmouseup="mouseDownUp(event, 'up', 'button', 'continue', 'recovery_step4')"
+                            type="button"
+                    >Continue
+                    </button>
+                  </div>
+                </div>
+              </form>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+

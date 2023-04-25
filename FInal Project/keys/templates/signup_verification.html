@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="main-container">
+  <div class="title">
+    <h1>New User Registration</h1>
+  </div>
+  <div class="container">
+    <div class="shadow-container">
+      <div class="pwd-success">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="welcome-text">
+              {% if message %}
+              <h2 class="text-center">Unsuccessful</h2>
+              <br><br>
+              <p class="text-center">{{message}}</p>
+              {% else %}
+              <h2 class="text-center" style="color: #7600a6">One more step</h2>
+              <br><br>
+              <p class="text-center">Welcome {{user_name.fn}} {{user_name.ln}}, we sent an email with
+                subject "Email Verification" to {{email}}.<br> Please click the link in the email.</p>
+              <br>
+              <h3 class="text-center">If you do not receive the email, please check the 'Promotions' label
+                in your email<br> OR <br>click on the 'Resend' button below</h3>
+              {% endif %}
+
+            </div>
+            {% if message %}
+            <div class="form-group row secure-btn">
+              <div>
+                <!--                              <input type="button" value="Back" onclick="history.back()">-->
+                <a class="btn btn-large" onclick="history.back()" title="back to home">Back</a>
+              </div>
+            </div>
+            {% else %}
+            <div class="form-group row secure-btn">
+              <div class="col-sm-6">
+                <a class="btn btn-large" href="/soteria/email_resend" title="back to home">Resend</a>
+              </div>
+              <div class="col-sm-6">
+                <a class="btn btn-large" href="../../" title="proceed">Home</a>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

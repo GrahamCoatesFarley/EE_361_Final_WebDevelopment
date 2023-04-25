@@ -1,0 +1,321 @@
+﻿body
+{
+	font-family: Verdana;
+}
+
+/* Fix to prevent vertical scrollbar on WebKit browsers. */
+.syntaxhighlighter { padding: 1px !important; }
+
+/* Add so input=submit doesn't get "default" rendering. Override master.css */
+#QuickSearch input[type=submit]
+{
+    background-image: none;
+    font-weight: normal !important;
+}
+
+/* Should be added to master.css */
+label 
+{
+	cursor: pointer;
+}
+
+.BodyMaster
+{
+}
+
+.PatLibHidden 
+{
+    display: none;
+}
+
+td.PatternCategoryBoxed
+{
+	padding: 0px;
+	padding-bottom: 25px;
+	border: solid 3px Gray;
+}
+
+div.PatternCategoryNoPatterns 
+{
+	font-style: italic;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+div.DivReleaseEvent
+{
+	padding: 10px 0px 0px 0px;
+}
+
+div.DivReleaseEventName
+{
+	background-color: Gray;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 12pt;
+	padding: 5px 5px;
+	margin-bottom: 5px;
+}
+
+.DivNotePanel, .patlib-note
+{
+	margin: 1.6em 0em;
+	padding: 1em 1em;
+	background-color: #FFF3C8;
+	border: 1px solid #FFE58A;
+	border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;
+}
+
+.DivNotePanel .DivNotePanel-Title, .patlib-note .patlib-note-title
+{
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}
+
+.
+.DivExamplePageTitle
+{
+	font-size: 14pt;
+	font-weight: bold;
+	padding-bottom: 15px;
+}
+
+div.PatLibSection, div.patlib-section
+{
+    margin-bottom: 15px;
+}
+
+div.PatLibSectionHeading, div.patlib-section-heading
+{
+    border-bottom: 1px solid #C6C6C4;
+    color: #1E1E1E;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+div.PatLibSectionHeading2, div.patlib-section-heading2
+{
+    border-bottom: 1px solid #C6C6C4;
+    color: #1E1E1E;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.PatLibSectionHeading a, .patlib-section-heading a
+{
+    text-decoration: none !important;
+}
+
+div.DivGuidePatternHeader, div.DivLibPatternHeader
+{
+	background-color: gray;
+	color: #ffffff;
+	font-size: 12px;
+	padding: 5px 5px;
+	margin: 15px 0px 10px 0px;
+}
+
+table.TablePatterns, table.TableDefault
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #000000;
+	border-collapse: collapse;
+}
+
+table.TablePatterns th, 
+table.TableDefault th
+{
+	border: 1px solid #000000;
+	background-color: Gray;
+	color: #ffffff;
+	padding: 5px;
+}
+
+table.TablePatterns tbody th,
+table.TableDefault tbody th
+{
+	border: 1px solid #000000;
+	padding: 5px;
+	text-align: left;
+	background-color: #ffffff;
+	color: #000000;
+}
+
+table.TablePatterns td,
+table.TableDefault td
+{
+	border: 1px solid #000000;
+	padding: 5px;
+	vertical-align: top;
+}
+
+div.DivSourceCode 
+{
+}
+
+div.DivSourceCode div.DivSourceCodeHeader
+{
+	font-size: large;
+	font-weight: bold;
+	border-bottom: solid 1.5px #000000;
+}
+
+.patlib-code 
+{
+    font-family: Monospace;
+}
+
+span.SpanResourceUrl 
+{
+	font-weight: bold;
+}
+
+span.SpanResourceLocal
+{
+	font-style:italic;
+}
+
+.thickbox ul
+{
+	padding-left: 40px; /* fix thickbox removing bullets */
+}
+
+div.DivDisclosure
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+body.pattern-library-hosted div.SelectorDeveloperDisclosure 
+{
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+div.DivDisclosureContent
+{
+	display: none;
+}
+
+div.PatternCategory
+{
+	padding: 5px;
+	background-color: Gray;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+div.PatternCategory a
+{
+	color: #ffffff;
+}
+
+table.PatternCategoryList div.Pattern
+{
+	padding-left: 20px;
+}
+
+table.PatternCategoryList li
+{
+	list-style-type: square;
+}
+
+.Thumbnail
+{
+	border: solid 1px #000000;
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
+    /* IE doesn't work, URL needs to be absolute: 
+    cursor: url(images/magnify.cur), default;
+    */
+}
+
+div.PatternLink
+{
+	padding-bottom: 5px;
+}
+
+table.PatternExampleGrid3
+{
+	width: 80%;
+	border-collapse: separate;
+}
+
+table.PatternExampleGrid3 td 
+{
+	width: 33%;
+	padding-right: 15px;
+}
+
+td.PatternExampleGridItem
+{
+    border: solid 1px #ffffff;
+	padding: 5px;
+}
+
+td.PatternExampleGridItem:hover
+{
+    border: solid 1px #000000;
+    background-color: #D3D3D3;
+}
+
+.StyleGuideItem 
+{
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+table.StyleGuideStyle 
+{
+    width: 100%;
+    border: 1px solid #000000;
+    vertical-align: top;
+    margin-bottom: 5px;
+}
+
+.StyleGuideStyleName 
+{
+    font-weight: bold;
+    font-style: italic;
+    background-color: #C6C6C4;
+}
+
+table.StyleGuideStyle td.StyleGuideStyleItemName 
+{
+    font-weight: bold;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+.StyleGuideExampleWithStyling 
+{
+    display: table;
+    width: 90%;
+}
+
+.StyleGuideExample 
+{
+    vertical-align: top;
+    display: table-cell;
+    width: 60%;
+}
+
+.StyleGuideStyling 
+{
+    vertical-align: top;
+    padding-left: 10px;
+    display: table-cell;
+    width: 40%;
+}
+
+.NoWrap 
+{
+    white-space:nowrap;
+}

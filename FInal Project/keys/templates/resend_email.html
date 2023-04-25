@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="main-container">
+  <div class="title">
+    <h1>Forgot Password</h1>
+  </div>
+  <div class="container">
+    <div class="step-container forgot-pwd-steps">
+      <div class='step-border'></div>
+      <div class="row">
+        <div class="col-xs-4 col-sm-4">
+          <div class="step step1 active-step">
+            <p>STEP</p>
+            <p>1 of 3</p>
+          </div>
+          <h4 class="active-step-text text-left">Personal Information</h4>
+        </div>
+        <div class="col-xs-4 col-sm-4">
+          <div class="step step2 active-step">
+            <p>STEP</p>
+            <p>2 of 3</p>
+          </div>
+          <h4 class="text-center active-step-text">Verify Identity</h4>
+        </div>
+        <div class="col-xs-4 col-sm-4">
+          <div class="step step3 active-step pull-right">
+            <p>STEP</p>
+            <p>3 of 3</p>
+          </div>
+          <h4 class="text-right active-step-text">Choose New Password</h4>
+        </div>
+      </div>
+    </div>
+    <div class="shadow-container">
+      <div class="step1-form">
+        <div class="row">
+          <div class="col-sm-12">
+            {% if email_resent %}
+            <div class="welcome-text">
+              <h2 class="text-center">Email Sent</h2>
+            </div>
+            {% else %}
+            <span class='req-text'>*Required</span>
+            <div class="welcome-text">
+              <h2 class="text-center">Something Went Wrong!</h2>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <p class="text-center">{{message}}</p>
+        <br>
+        <br>
+        <div class="pwd-step3-container">
+          <div class="col-sm-10">
+            <a class="btn padding" href="../../" title="back to home">Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+

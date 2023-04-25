@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="main-container">
+  <div class="title">
+    <h1>Forgot Password</h1>
+  </div>
+  <div class="container">
+    <div class="step-container forgot-pwd-steps">
+      <div class='step-border'></div>
+      <div class="row">
+        <div class="col-xs-4 col-sm-4">
+          <div class="step step1 active-step">
+            <p>STEP</p>
+            <p>1 of 3</p>
+          </div>
+          <h4 class="active-step-text text-left">Personal Information</h4>
+        </div>
+        <div class="col-xs-4 col-sm-4">
+          <div class="step step2 active-step">
+            <p>STEP</p>
+            <p>2 of 3</p>
+          </div>
+          <h4 class="text-center active-step-text">Verify Identity</h4>
+        </div>
+        <div class="col-xs-4 col-sm-4">
+          <div class="step step3 active-step pull-right">
+            <p>STEP</p>
+            <p>3 of 3</p>
+          </div>
+          <h4 class="text-right active-step-text">Choose New Password</h4>
+        </div>
+      </div>
+    </div>
+
+    {% if giftcard %}
+    <div class="shadow-container">
+      <div class="row">
+        <div class="row text-center">
+          <br>
+          <h2 class="mt-5">Congratulations</h2>
+          <div align="right" class="col-sm-6">
+            <img alt="Gift card" height="200"
+                 src="https://cdn.shopify.com/s/files/1/0900/3540/products/giftcard_checkout_v01-964x964_grande.png?v=1538066123"
+                 width="60%">
+          </div>
+          <div align="left" class="col-sm-6 mt-5">
+            <br><br><br><br>
+            <h6 class="text-left" style="font-weight: bold;">Here are your gift card details:</h6>
+            <br><h6 class="text-left" style="color:green">Amazon Gift Card
+            <br>$20 Worth
+            <br>Code: 676-3763-783-0099</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+
+    <div class="shadow-container">
+      <div class="step1-form">
+        <div class="row">
+          <div class="col-sm-12">
+            {% if access_denied %}
+            <div class="welcome-text">
+              <h2 class="text-center">Access Denied</h2>
+            </div>
+            {% else %}
+            {% if enterOTP %}
+            <div class="welcome-text">
+              <h2 class="text-center">OTP Verification Required</h2>
+            </div>
+            {% else %}
+            <span class='req-text'>*Required</span>
+            <div class="welcome-text">
+              <h2 class="text-center">Create New Password</h2>
+            </div>
+            {% endif %}
+            {% endif %}
+          </div>
+        </div>
+        {% if access_denied %}
+        <p class="text-center" style="color: #cc0000">{{message}}</p>
+        <br>
+        <br>
+        <div class="pwd-step3-container">
+          <div class="col-sm-10">
+            <a class="btn padding" href="forgotpwd1" title="back to forgotpwd screen1">Retry</a>
+          </div>
+        </div>
+        {% endif %}
+        {% if enterOTP %}
+        {% if error %}
+        <p class="text-center" style="color: #cc0000">{{error}}</p>
+        <br>
+        {% endif %}
+        {% if split %}
+        <p class="text-center">Enter the first half (via phone) and second half (via email) of the OTP here
+          WITHOUT space.</p>
+        {% endif %}
+        <form action="forgotpwd4" autocomplete="off" class="form-horizontal pwdStep2Form" method="post"
+              name="pwdStep2Form" novalidate
+              onmouseenter="mousee('mouse_enter', 'form', 'form', 'recovery_step3')"
+              onmouseleave="mousee('mouse_leave', 'form', 'form', 'recovery_step3')">
+          {% csrf_token %}
+          <div class="col-sm-12 input-margin"
+               style="display: flex; justify-content: center; margin-top: 2rem; margin-bottom: 5rem;">
+            <input autocomplete="disabled" class="form-field" id="otp" name="otp"
+                   onkeydown="myFunction2(event, 0, 'otp')"
+                   onkeyup="myFunction2(event, 1, 'otp')"
+                   onmousedown="mouseDownUp(event, 'down', 'input', 'otp', 'recovery_step3')"
+                   onmouseenter="mousee('mouse_enter', 'input', 'otp', 'recovery_step3')"
+                   onmouseleave="mousee('mouse_leave', 'input', 'otp', 'recovery_step3')"
+                   onmouseup="mouseDownUp(event, 'up', 'input', 'otp', 'recovery_step3')"
+                   placeholder="Enter OTP"
+                   required type="text">
+          </div>
+          <div class="form-group row secure-btn">
+            <div class="col-sm-6" style="display: flex; justify-content: center; margin-bottom: 2rem;">
+              <a class="btn back-button" href="forgotpwd1"
+                 onmousedown="mouseDownUp(event, 'down', 'button', 'back', 'recovery_step3')"
+                 onmouseenter="mousee('mouse_enter', 'button', 'back', 'recovery_step3')"
+                 onmouseleave="mousee('mouse_leave', 'button', 'back', 'recovery_step3')"
+                 onmouseup="mouseDownUp(event, 'up', 'button', 'back', 'recovery_step3')"
+                 style="height: 10%; width: 55%;"
+                 title="back to forgotpwd screen1"
+              >Back</a>
+            </div>
+            <div class="col-sm-6" style="display: flex; justify-content: center; margin-bottom: 2rem;">
+              <button class="btn" id="validate"
+                      onmousedown="mouseDownUp(event, 'down', 'button', 'validate', 'recovery_step3')"
+                      onmouseenter="mousee('mouse_enter', 'button', 'validate', 'recovery_step3')"
+                      onmouseleave="mousee('mouse_leave', 'button', 'validate', 'recovery_step3')"
+                      onmouseup="mouseDownUp(event, 'up', 'button', 'validate', 'recovery_step3')"
+                      style="height: 10%; width: 55%;"
+                      type="button"
+              >Validate
+              </button>
+            </div>
+          </div>
+          <br><br>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}
+

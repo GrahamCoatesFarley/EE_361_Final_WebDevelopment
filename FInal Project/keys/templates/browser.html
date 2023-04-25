@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script type="text/javascript">
+      window.onload = function () {
+          var num = "{{num}}";
+          var num1 = parseInt(num) + parseInt(localStorage.num2);
+          document.getElementById("display").innerHTML = num1;
+          <!--                window.localStorage.clear("num2");-->
+      }
+  </script>
+
+</head>
+<body>
+<div class="container">
+  {% if num %}
+  <form action="#" autocomplete="off" class="form-horizontal loginForm" method="POST" name="loginForm">
+    {% csrf_token %}
+    <div>
+      <h6 class="text-center" style="font-weight: bold;">Your incremented number is </h6>
+      <br><br>
+      <p class="text-center" id="display" style="font-weight: bold;"></p>
+    </div>
+    <br><br>
+    <input class="btn" type="submit" value="Back"/>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+
+  </form>
+
+
+  {% else%}
+  <form action="#" autocomplete="off" class="form-horizontal loginForm" method="POST" name="loginForm">
+    {% csrf_token %}
+    <div>
+      <h6 class="text-center" style="font-weight: bold;">This will increment the first number by 5 in the server
+        and add it to the second number in the browser</h6>
+      <br><br>
+      <input autocomplete="off" id="number" name="number" placeholder="Enter first number" required size="50"
+             type="text">
+      <br><br>
+      <input autocomplete="off" id="number2" name="number2" placeholder="Enter second number" required
+             size="50" type="text">
+    </div>
+    <br><br>
+    <input class="btn" id="increment" onclick="getNumber(event)" type="submit" value="Increment In Browser"/>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <script type="text/javascript">
+        window.localStorage.clear("num2");
+    </script>
+  </form>
+  {% endif %}
+</div>
+<script src="{% static 'keys/js/increment.js' %}" type="text/javascript"></script>
+</body>
+</html>
+
+{% endblock %}

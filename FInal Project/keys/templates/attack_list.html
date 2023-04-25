@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<section class="main-container">
+  <div class="title">
+    <h1>List of Attacks</h1>
+  </div>
+  <div class="container">
+    <div class="shadow-container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="welcome-text">
+            <br>
+            <h6 class="text-center" style="color:green">Attacks statistics and auto email sent to engage
+              subjects</h6>
+            <br>
+            <div class="row">
+              <div class="col-sm-6" style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                <a class="btn back-button" href="/" style="height: 10%; width: 50%;"
+                   title="back to forgotpwd screen1">Go to login</a>
+              </div>
+              <div class="col-sm-6" style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                <a class="text-center btn" id="send_attack_reminder" name="send_attack_reminder"
+                   style="height: 10%; width: 55%;">Email Impostors</a>
+              </div>
+            </div>
+          </div>
+          <table>
+            <tr>
+              <th>Attacker</th>
+              <th>Attacks</th>
+              <th>Login Attempts</th>
+              <th>Account recovery Attempts</th>
+            </tr>
+            {% for attack in object_attacklist %}
+            <tr>
+              <td>{{ attack.attacker }}</td>
+              <td>{{ attack.attacks }}</td>
+              <td>{{ attack.login_attempts }}</td>
+              <td>{{ attack.AR_attempts }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+      const sendReminder = document.querySelector('#send_attack_reminder');
+      sendReminder.onclick = function () {
+          var URL = "{% url 'soteria:sendAttackReminder' %}"
+          var data = '';
+          $.post(URL, data);
+      };
+  </script>
+
+</section>
+{% endblock %}

@@ -1,0 +1,752 @@
+/* Css reset start*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.form-group{
+    margin-bottom: 0;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* Css reset end*/
+/* Font Family start */
+@font-face {
+    font-family: open-sansBold;
+    src: url('../fonts/OpenSans-Bold.ttf');
+}
+@font-face {
+    font-family: open-sansBoldItalic;
+    src: url('../fonts/OpenSans-BoldItalic.ttf');
+}
+@font-face {
+    font-family: open-sansExtraBold;
+    src: url('../fonts/OpenSans-ExtraBold.ttf');
+}
+@font-face {
+    font-family: open-sansExtraBoldItalic;
+    src: url('../fonts/OpenSans-ExtraBoldItalic.ttf');
+}
+@font-face {
+    font-family: open-sansItalic;
+    src: url('../fonts/OpenSans-Italic.ttf');
+}
+@font-face {
+    font-family: open-sansLight;
+    src: url('../fonts/OpenSans-Light.ttf');
+}
+@font-face {
+    font-family: open-sansLightItalic;
+    src: url('../fonts/OpenSans-LightItalic.ttf');
+}
+@font-face {
+    font-family: open-sansRegular;
+    src: url('../fonts/OpenSans-Regular.ttf');
+}
+@font-face {
+    font-family: open-sansSemiBold;
+    src: url('../fonts/OpenSans-Semibold.ttf');
+}
+@font-face {
+    font-family: open-sansSemiBoldItalic;
+    src: url('../fonts/OpenSans-SemiboldItalic.ttf');
+}
+@font-face {
+  font-family: domaine-displayBold;
+  src: url('../fonts/DomaineDisplayWeb-Bold.eot'); 
+  src: url('../fonts/DomaineDisplayWeb-Bold.woff2') format('woff2'), 
+       url('../fonts/DomaineDisplayWeb-Bold.woff') format('woff'), 
+       url('../fonts/DomaineDisplay-Bold.ttf')  format('truetype')
+}
+ /* Font Family end */
+body {
+    font-family: open-sansRegular , Arial;
+}
+/* Form Elements css starts*/
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=tel]{
+    border:2px solid #e5e5e5;
+    height: 30px;
+    width: 60%;
+    padding: 0 7px;
+}
+input:focus{
+    outline: none;
+    border-color: #e5e5e5;
+}
+label.check-box {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 13px;
+    margin: 0;
+}
+label.check-box:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: -24px;
+    top: -7px;
+    bottom: 1px;
+    background-color: #fff;
+    border: 2px solid #e5e5e5;
+    border-radius: 0px;
+}
+input[type=checkbox].check-box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid transparent;
+}
+input[type=checkbox].check-box:checked + label.check-box:before {
+    content: "\2713";
+    font-size: 1em;
+    color: #7e3f98;
+    background: #fff;
+    text-align: center;
+    line-height: 16px;
+    border-color: #7e3f98;
+    font-weight: bold;
+}
+label.check-box span{
+    position: relative;
+    top: -6px;
+    color:#2f3338;
+}
+[type=radio]+label{
+    position: relative;
+    padding-left: 5px;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 1rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+}
+[type=radio]+label:before {
+    border-color: #7e3f98;
+}
+[type=radio]+label:after {
+    border-color: #7e3f98;
+}
+[type="radio"]:checked+label:after {
+    border-color: #7e3f98;
+    background-color: #7e3f98;
+    z-index: 0;
+    -webkit-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    transform: scale(1.02);
+}
+[type="radio"].with-gap:checked+label:before {
+    border-color: #7e3f98;
+}
+[type=radio].with-gap:checked+label:after {
+    -webkit-transform: scale(.5);
+    -ms-transform: scale(.5);
+    transform: scale(.5);
+}
+[type=radio]+label:after, [type=radio]+label:before {
+    content: '';
+    position: absolute;
+    left: -23px;
+    top: -1px;
+    margin: 4px;
+    width: 16px;
+    height: 16px;
+    z-index: 0;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    background-color: #fff;
+   /* -webkit-transition: .28s ease;
+    transition: .28s ease;*/
+}
+select {
+  background-color: white;
+  display: inline-block;
+  font: inherit;
+  padding: 7px 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+   border:2px solid #e5e5e5;
+}
+select.classic {
+    background-image: linear-gradient(45deg, transparent 50%, white 50%),
+                      linear-gradient(135deg, white 50%, transparent 50%),
+                      linear-gradient(to right, #7e3f98, #7e3f98);
+    background-position: calc(100% - 12px) calc(1em), calc(100% - 7px) calc(1em), 100% 0;
+    background-size: 5px 5px, 5px 5px, 2em 2.5em;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 0.785em;
+    color: #414141;
+}
+select.classic::-ms-expand {
+    display: none;
+    border-collapse: collapse;
+}
+textarea{
+    border:2px solid #e5e5e5;
+    width: 100%;
+    height: 100px;
+}
+textarea:focus{
+    outline: none;
+    border-color: #e5e5e5;
+}
+input:focus,input:hover.
+select:focus,
+textarea:focus,
+button:focus ,.btn:hover {
+    outline: none;
+}
+form-control:focus {
+    border-color: #b2b2b2;
+}
+.btn,.btn:focus , .btn:hover {
+    padding: 4px 0;
+    color:#fff;
+    background: #7e3f98;
+    font-family: open-sansBold , Arial;
+}
+.btn{
+    width: 100%;
+}
+.input-margin{
+    margin-bottom: 30px;
+}
+input[type=text].error-border, 
+input[type=password].error-border ,
+input[type=email].error-border, 
+input[type=tel].error-border,
+select.error-border ,
+textarea.error-border{
+    border:2px solid #d31e11 ;
+}
+.form-horizontal label{
+    font-size: 0.95em;
+    color:#414141;
+}
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+/* Common Css Start*/
+h1{
+    color:#fff;
+    font-size: 2.25em;
+    font-family: domaine-displayBold , Arial;
+}
+h2{
+    font-size: 1.5em;
+}
+h3{
+    font-size: 1.125em;
+    font-family: open-sansBold , Arial;
+    padding-bottom: 5px;
+    color: #414141;
+}
+h4{
+    text-align: center;
+}
+p{
+    font-size: 0.875em;
+    padding-bottom: 4px;
+    color:#414141;
+    line-height: 14px;
+}
+p.error{background: url(../images/error_icon.png) no-repeat 0 0;
+    color: #D31E11 !important;
+    padding-left: 20px;
+    margin-top: 2px;
+    font-size: 0.875em !important;
+}  
+p#dob-error,p#country-error,p#state-error{
+    position: relative;
+    left: 15px;
+}
+p.semibold{
+    padding-bottom: 10px;
+    font-family: open-sansSemiBold , Arial;
+}
+.mb0{
+    margin-bottom: 0 !important;
+}
+.welcome-text h2{
+     color: #414141;
+}
+.main-container{
+    background: #eeeeee;
+}
+.shadow-container{
+    margin: 40px auto 35px auto;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: 75%;
+}
+.links ul li{
+    font-size: 0.875em;
+    font-family: open-sansRegular , Arial;
+}
+.links ul li:last-child{
+    border-right: none;
+}
+.links ul li , .links ul li:hover{
+    float: left;
+    padding: 2px 20px;
+    text-decoration: none;
+}
+.links ul li a:hover{
+    text-decoration: none;
+}
+.quick-links ul{
+    font-size: 0.8125em;
+    padding-top: 25px;
+}
+.quick-links ul li a{
+    color: #414141;
+}
+.quick-links ul li{
+    padding-bottom: 10px;
+}
+.step-border{
+    border-top:2px solid #7e3f98;
+    position: relative;
+    top: 47px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+.step{
+    width: 90px;
+    height: 90px;
+    border-radius: 50px;
+    border: 1px solid #414141;
+    padding-top: 26px;
+    margin: auto;
+}
+.step p{
+    text-align: center;
+    color:#fff;
+}
+.forgot-pwd-steps .step1{
+    margin-left: 10%;
+}
+.forgot-pwd-steps .step3{
+    margin-right: 10%;
+}
+.forgot-pwd-steps h4{
+    clear:both;
+}
+.active-step{
+    background: #7e3f98;
+}
+.active-step-text{
+    color:#7e3f98;
+}
+.diable-step{
+    background:#6b5e70;
+}
+.req-text{
+    font-size: 0.75em;
+    display: inline-block;
+    padding-top: 10px;
+    color: red;
+    padding-left: 10px;
+}
+.req-field{
+    color: red;
+}
+.register-links{
+    padding-bottom: 58px;
+}
+.register-links.links ul li{
+    border-right: 2px solid #dddddd;
+}
+.register-links.links ul li a{
+    color:#7d3f98;
+}
+.privacy-links{
+    padding-top:15px;
+    padding-bottom: 34px;
+}
+.privacy-links.links ul li{
+    border-right: 1px solid #adadad;
+    padding: 2px 15px;
+}
+.privacy-links.links ul li a{
+    color:#414141;
+    font-size: 0.875em;
+}
+.privacy-links.links ul li a:hover{
+    text-decoration: underline;
+}
+.register-links.links ul li:first-child ,.privacy-links.links ul li:first-child{
+    padding-left: 0px;
+}
+.register-links.links ul li:last-child,.privacy-links.links ul li:last-child{
+    border-right: none;
+}
+.step-container{
+    width:75%;
+    margin:25px auto 0 auto;
+}
+.step-container h4{
+    padding-top: 20px;
+}
+.idendity-verify-block{
+    border:2px solid #e5e5e5;
+    margin-top: 27px;
+    margin-bottom: 27px;
+}
+.idendity-verify-block .form-group{
+    padding-right: 1%;
+    padding-left: 6%;
+}
+.idendity-verify-block .form-group:nth-of-type(even)
+{
+    background: #fff;
+}
+.idendity-verify-block .form-group:nth-of-type(odd)
+{
+    background: #eee;
+}
+.terms-conditions{
+    border: 2px solid #d2d2d2;
+    height: 530px;
+    overflow-y: scroll;
+    margin-bottom: 30px;
+    padding: 20px 25px 30px 40px;
+}
+.terms-conditions p{
+    line-height: 20px;
+    font-size: 0.825em;
+    padding-bottom: 15px;
+}
+.terms-checkbox{
+    padding-bottom: 20px;
+}
+.terms{
+    text-align: right;
+}
+.terms .check-box{
+    padding-right: 98px;
+}
+.terms button , .terms a{
+    width: 150px;
+}
+.terms .disable-button{
+    background: #c7c7c7;
+    cursor: not-allowed;
+}
+.declare-text{
+    color:#7e3f98;
+    padding-top: 30px;
+}
+/* Common Css End*/
+/*Header css start*/
+.logo{
+    padding-top: 20px;
+}
+.logo img{
+    margin:auto;
+}
+.project-name{
+    text-align: center;
+    padding: 10px 0 20px 0;
+    font-size: 1.75em;
+    color:#7e3f98;
+    font-family: open-sansBold , Arial;
+}
+.title{
+    background: #7e3f98;
+    padding: 24px 0 27px 0;
+    text-align: center;
+}
+/*Header css end*/
+/* pages css start */
+/* Login form css start */
+.login-form{
+    padding-bottom: 68px
+}
+.login-form-container , 
+.step1-form-container,
+.pwd-step1-container{
+    padding-left: 20%;
+}
+.login-form .welcome-text{
+    padding-top: 50px;
+    padding-bottom: 45px;
+}
+.login-form-container .secure-btn{
+    padding:15px 0 40px 0px;
+}
+/* Login form css end */
+/* step1 form css start */
+.step1-form input[type=text],
+.step1-form input[type=password],
+.step1-form input[type=email] ,
+.step1-form input[type=tel],
+.pwd-step1 input[type=text],
+.pwd-step1 input[type=password],
+.pwd-step1 input[type=email]{
+    width:65%;
+}
+.step1-form .welcome-text, 
+.step3-form .welcome-text,
+.pwd-step1 .welcome-text{
+    padding-top: 20px;
+    padding-bottom: 45px;
+}
+.step1-form .member-id p ,
+.pwd-step1 .member-id p{
+    line-height: 20px;
+}
+.step1-form .member-id a,
+.pwd-step1 .member-id a{
+    color:#7e3f98;
+}
+.step1-form-container,
+.pwd-step1-container{
+    padding-bottom: 100px;
+}
+/* step1 form css end */
+/* step2 form css start */
+.step2-form{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.verify-service{
+    padding-left: 75px;
+    padding-right: 75px;
+    text-align: center;
+    padding-top: 15px;
+    line-height: 30px;
+}
+.step2-form .welcome-text{
+    padding-top: 35px;
+}
+.step2-form-container .secure-btn{
+    margin-bottom: 30px;
+     text-align: center;
+}
+.step2-form-container .secure-btn button{
+    width: 40%;
+}
+.step2-form-container .back-button{
+    margin-right: 10px;
+}
+.step2-form-container span img{
+    padding-top: 13px;
+}
+.step2-form-container .radio-button{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+/* step2 form css end */
+/* step3 form css start */
+.step3-form-content{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 50px;
+}
+.step3-form-content h2 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.step3-form-content label:first-child{
+    text-align: right;
+}
+.step3-form-content label{
+    font-size: 0.95em;
+    padding-bottom: 20px;
+}
+.step3-form-container{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 75px;
+}
+.step3-form select{
+    width: 60%;
+}
+/* step3 form css end */
+/* step4 form css start */
+.step4-form{
+  padding: 30px 35px 50px 35px;
+}
+.step4-form button.continue{
+    margin-left: 10px;
+}
+/* step4 form css end */
+/* pwd step2 form css start */
+.pwd-step2{
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 75px;
+}
+.pwd-step2 .welcome-text h2, .pwd-step2 .welcome-text p{
+    text-align: center;
+    margin: 0  6% 0 4%;
+}
+.pwd-step2 .welcome-text h2{
+    padding-top: 20px;
+    padding-bottom: 25px;
+}
+.pwd-step2 .welcome-text p{
+    line-height: 20px;
+}
+.pwd-step2-container.secure-btn{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.pwd-step2-container .secure-btn button , .pwd-step2-container .secure-btn a{
+    width: 48%;
+}
+.pwd-step2-container .back-button{
+    margin-right: 10px;
+}
+.pwd-step2-container .textarea{
+    padding-top: 20px;
+    padding-bottom: 75px;
+    text-align: center;
+    margin: 0  6% 0 4%;
+}
+.pwd-step2-container .textarea p{
+    text-align: left !important;
+}
+
+/* pwd step2 form css end */
+/* pwd step3 form css start */
+.pwd-step3-container{
+    padding-left: 10%;
+    padding-bottom: 100px;
+}
+.pwd-step3-container .secure-btn{
+    padding-top: 50px;
+}
+/* pwd step3 form css end */
+/* success form css start */
+.success-form{
+    padding:30px 14% 100px 14%;
+}
+.success-form p{
+    font-size: 1em;
+    line-height: 20px;
+    padding-top: 20px;
+}
+.pwd-success{
+    padding-top: 50px;
+    padding-bottom: 150px;
+}
+.success-form .welcome-text ,
+.pwd-success .welcome-text{
+    padding-bottom: 100px;
+}
+.success-form .welcome-text{
+    padding:0 14% 100px 14%;
+    text-align: center;
+}
+.success-form .secure-btn , .pwd-success .secure-btn {
+   text-align: center; 
+}
+.success-form button , .pwd-success a{
+    width: 33%;
+}
+/* success form css end */
+/* authorization failure form css end */
+.authorization-fail-form{
+    padding-top: 50px;
+    padding-bottom: 200px;
+}
+.authorization-text p{
+    font-size:1em;
+    text-align: center;
+}
+/* authorization failure form css end */
+/* pages css end */
+/*Footer css start*/
+footer{
+    border-top:1px solid #b2b2b2;
+}
+.copyright-text{
+    font-size: 0.875em;
+    padding-bottom: 17px;
+}
+.languages{
+    color: #2f3338;
+    padding-bottom: 15px;
+    
+    font-family: open-sansBold , Arial;
+}
+.languages a{
+     color:#2f3338;
+}
+.languages a span{
+    padding: 0 5px;
+    font-size: 0.6875em;
+    border-right: 1px solid #2f3338;
+}
+.languages a span:last-child{
+    border-right: none;
+}
+.languages img{
+    position: relative;
+    top:2px;
+}
+.login{
+    text-align: center;
+}
+.digicert{
+    padding-top: 25px;
+}
+/*Footer css end*/
+div.attack_info{
+position:fixed;
+left: 30px;
+}

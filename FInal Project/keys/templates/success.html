@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="main-container">
+  <div class="title">
+    <h1>Forgot Password</h1>
+  </div>
+  <div class="container">
+    <div class="shadow-container">
+      <div class="pwd-success">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="welcome-text">
+              {% if error %}
+              <h2 class="text-center">{{error}}</h2>
+              {% else %}
+              <h2 class="text-center">Your password is successfully changed</h2>
+              {% if message %}
+              <br><br><h6 class="text-center" style="color:green">{{message}}</h6>
+              {% else %}
+              <br><br><h6 class="text-center" style="color:green">You can now proceed to login with your
+              new password</h6>
+              {% endif %}
+              <!--                        <div align="center" class="row col-sm-12">-->
+              <!--&lt;!&ndash;                            <iframe width="40%" height="200"&ndash;&gt;-->
+              <!--&lt;!&ndash;                                    src="https://www.youtube.com/embed/84VtdVK2a0A?autoplay=1&controls=0&start=0&end=15"></iframe>&ndash;&gt;-->
+              <!--                            <div align="right" class="col-sm-6">-->
+              <!--                                <img width="60%" height="200" src="https://cdn.shopify.com/s/files/1/0900/3540/products/giftcard_checkout_v01-964x964_grande.png?v=1538066123" alt="Gift card">-->
+              <!--                            </div>-->
+              <!--                            <div align="left" class="col-sm-5">-->
+              <!--                                <br><br><br><br>-->
+              <!--                                <h4 class="text-left" style="font-weight: bold;">Here are your gift card details:</h4>-->
+              <!--                                <br><h4 class="text-left" style="color:green">Amazon Gift Card-->
+              <!--                                <br>$20 Worth-->
+              <!--                                <br>Code: 676-3763-783-0099</h4>-->
+              <!--                            </div>-->
+              <!--                        </div>-->
+              {% endif %}
+            </div>
+
+            <div class="secure-btn">
+              {% if status %}
+              <a class="btn back-button" href={{status}} title="back to forgotpwd screen1">Go Home</a>
+              {% else %}
+              <a class="btn back-button" href="/" title="back to forgotpwd screen1">Home</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

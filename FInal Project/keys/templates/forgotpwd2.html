@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="main-container">
+  <div class="title">
+    <h1 onmouseenter="mousee('mouse_enter', 'text', 'title', 'recovery_step2')"
+        onmouseleave="mousee('mouse_leave', 'text', 'title', 'recovery_step2')"
+    >Forgot Password</h1>
+  </div>
+  <div class="container">
+    <div class="step-container forgot-pwd-steps">
+      <div class="step-border"></div>
+      <div class="row">
+        <div class="col-xs-4 col-sm-4"
+             onmouseenter="mousee('mouse_enter', 'text', 'step_count1', 'recovery_step2')"
+             onmouseleave="mousee('mouse_leave', 'text', 'step_count1', 'recovery_step2')">
+          <div class="step step1 active-step">
+            <p>STEP</p>
+            <p>1 of 3</p>
+          </div>
+          <h4 class="active-step-text text-left">Personal Information</h4>
+        </div>
+        <div class="col-xs-4 col-sm-4"
+             onmouseenter="mousee('mouse_enter', 'text', 'step_count2', 'recovery_step2')"
+             onmouseleave="mousee('mouse_leave', 'text', 'step_count2', 'recovery_step2')">
+          <div class="step step2 active-step">
+            <p>STEP</p>
+            <p>2 of 3</p>
+          </div>
+          <h4 class="active-step-text text-center">Verify Identity</h4>
+        </div>
+        <div class="col-xs-4 col-sm-4"
+             onmouseenter="mousee('mouse_enter', 'text', 'step_count3', 'recovery_step2')"
+             onmouseleave="mousee('mouse_leave', 'text', 'step_count3', 'recovery_step2')">
+          <div class="step step3 diable-step pull-right">
+            <p>STEP</p>
+            <p>3 of 3</p>
+          </div>
+          <h4 class="text-right">Choose New Password</h4>
+        </div>
+      </div>
+    </div>
+    <div class="shadow-container">
+      <span class="req-text">*Required</span>
+      <div class="pwd-step2">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class='welcome-text'>
+              <h2 onmouseenter="mousee('mouse_enter', 'text', 'subheading', 'recovery_step2')"
+                  onmouseleave="mousee('mouse_leave', 'text', 'subheading', 'recovery_step2')"
+              >Additional Verification</h2>
+
+              <p>
+              <p class="semibold">For added security, please type the following sentence in the textbox
+                below and click "Authenticate". </p>
+              {% if user_name %}
+              <p class="declare-text"><span class="req-field">*</span>I declare that I am {{user_name.fn}}
+                {{user_name.ln}} and everything I type here is true.</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="pwd-step2-container">
+          <div class="row">
+            <div class="col-sm-12">
+              <form action="forgotpwd3" autocomplete="off" class="form-horizontal pwdStep2Form"
+                    method="post" name="pwdStep2Form" novalidate
+                    onmouseenter="mousee('mouse_enter', 'form', 'form', 'recovery_step2')"
+                    onmouseleave="mousee('mouse_leave', 'form', 'form', 'recovery_step2')">
+                {% csrf_token %}
+                <div class="form-group row">
+                  <div class="textarea">
+                          <textarea class="form-field" id="declaretext" name="declaretext" ondrag="return false"
+                                    ondrop="return false"
+                                    onkeydown="myFunction2(event, 0, 'declare')"
+                                    onkeyup="myFunction2(event, 1, 'declare')"
+                                    onmousedown="mouseDownUp(event, 'down', 'textarea', 'declaretext', 'recovery_step2')"
+                                    onmouseenter="mousee('mouse_enter', 'textarea', 'declaretext', 'recovery_step2')"
+                                    onmouseleave="mousee('mouse_leave', 'textarea', 'declaretext', 'recovery_step2')"
+                                    onmouseup="mouseDownUp(event, 'up', 'textarea', 'declaretext', 'recovery_step2')"
+                                    onpaste="return false;" placeholder="Type text here" required></textarea>
+                    <br><br>
+                    <!--                          <div>-->
+                    <!--                            <span style="font-weight: bold;">Are you the TRUE OWNER of this account?</span>-->
+                    <!--                            <input id="owner1" type="radio" name="owner" value="Yes"> Yes-->
+                    <!--                              <input id="owner2" type="radio" name="owner" value="No"> No-->
+                    <!--                            <h8 id="error" style="color:red"></h8>-->
+                    <!--                          </div>-->
+                  </div>
+                </div>
+
+                <div class="secure-btn">
+                  <a class="btn back-button" href="forgotpwd1"
+                     onmousedown="mouseDownUp(event, 'down', 'button', 'back', 'recovery_step2')"
+                     onmouseenter="mousee('mouse_enter', 'button', 'back', 'recovery_step2')"
+                     onmouseleave="mousee('mouse_leave', 'button', 'back', 'recovery_step2')"
+                     onmouseup="mouseDownUp(event, 'up', 'button', 'back', 'recovery_step2')"
+                     title="back to forgotpwd screen1"
+                  >Back</a>
+                  <button class="btn" id="auth"
+                          onmousedown="mouseDownUp(event, 'down', 'button', 'authenticate', 'recovery_step2')"
+                          onmouseenter="mousee('mouse_enter', 'button', 'authenticate', 'recovery_step2')"
+                          onmouseleave="mousee('mouse_leave', 'button', 'authenticate', 'recovery_step2')"
+                          onmouseup="mouseDownUp(event, 'up', 'button', 'authenticate', 'recovery_step2')"
+                          type="button"
+                  >Authenticate
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--<script>-->
+<!--        const radio1 = document.querySelector('#owner1');-->
+<!--        const radio2 = document.querySelector('#owner2');-->
+<!--        const btn = document.querySelector('#auth');-->
+<!--        const declare = document.querySelector('#declaretext');-->
+<!--        // handle click button-->
+<!--        radio1.onclick = function () {-->
+<!--            btn.disabled = false;-->
+<!--        };-->
+<!--        radio2.onclick = function () {-->
+<!--            btn.disabled = false;-->
+<!--        };-->
+
+<!--        declare.onclick = function () {-->
+<!--            if (!$("input[name='owner']:checked").val()) {-->
+<!--            btn.disabled = true-->
+<!--          }else{-->
+<!--&lt;!&ndash;          document.getElementById("error").innerHTML = "casdcz";&ndash;&gt;-->
+<!--          btn.disabled = false-->
+<!--          }-->
+<!--        };-->
+<!--</script>-->
+
+{% endblock %}

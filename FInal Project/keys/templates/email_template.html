@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+>
+
+{% load static %}
+
+<head>
+  <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+  <meta content="width=device-width" name="viewport"> <!-- Forcing initial-scale shouldn't be necessary -->
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"> <!-- Use the latest (edge) version of IE rendering engine -->
+  <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+  <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+
+  <!-- CSS Reset : BEGIN -->
+  <style>
+
+      /* What it does: Remove spaces around the email design added by some email clients. */
+      /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+      html,
+      body {
+          margin: 0 auto !important;
+          padding: 0 !important;
+          height: 100% !important;
+          width: 100% !important;
+          background: #f1f1f1;
+      }
+
+      /* What it does: Stops email clients resizing small text. */
+      * {
+          -ms-text-size-adjust: 100%;
+          -webkit-text-size-adjust: 100%;
+      }
+
+      /* What it does: Centers email on Android 4.4 */
+      div[style*="margin: 16px 0"] {
+          margin: 0 !important;
+      }
+
+      /* What it does: Stops Outlook from adding extra spacing to tables. */
+      table,
+      td {
+          mso-table-lspace: 0pt !important;
+          mso-table-rspace: 0pt !important;
+      }
+
+      /* What it does: Fixes webkit padding issue. */
+      table {
+          border-spacing: 0 !important;
+          border-collapse: collapse !important;
+          table-layout: fixed !important;
+          margin: 0 auto !important;
+      }
+
+      /* What it does: Uses a better rendering method when resizing images in IE. */
+      img {
+          -ms-interpolation-mode: bicubic;
+      }
+
+      /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+      a {
+          text-decoration: none;
+      }
+
+      /* What it does: A work-around for email clients meddling in triggered links. */
+      *[x-apple-data-detectors], /* iOS */
+      .unstyle-auto-detected-links *,
+      .aBn {
+          border-bottom: 0 !important;
+          cursor: default !important;
+          color: inherit !important;
+          text-decoration: none !important;
+          font-size: inherit !important;
+          font-family: inherit !important;
+          font-weight: inherit !important;
+          line-height: inherit !important;
+      }
+
+      /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+      .a6S {
+          display: none !important;
+          opacity: 0.01 !important;
+      }
+
+      /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+      .im {
+          color: inherit !important;
+      }
+
+      /* If the above doesn't work, add a .g-img class to any image in question. */
+      img.g-img + div {
+          display: none !important;
+      }
+
+      /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+      /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+      /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+      @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+          u ~ div .email-container {
+              min-width: 320px !important;
+          }
+      }
+
+      /* iPhone 6, 6S, 7, 8, and X */
+      @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+          u ~ div .email-container {
+              min-width: 375px !important;
+          }
+      }
+
+      /* iPhone 6+, 7+, and 8+ */
+      @media only screen and (min-device-width: 414px) {
+          u ~ div .email-container {
+              min-width: 414px !important;
+          }
+      }
+
+
+      <!--
+      table {
+      --> <!-- font-family: arial, sans-serif;
+      --> <!-- border-collapse: collapse;
+      --> <!-- width: 100 %;
+      --> <!--
+      }
+
+      -->
+
+      <!--
+      td, th {
+      --> <!-- border: 1 px solid #dddddd;
+      --> <!-- text-align: left;
+      --> <!-- padding: 8 px;
+      --> <!--
+      }
+
+      -->
+
+      <!--
+      tr:nth-child(even) {
+      --> <!-- background-color: #dddddd;
+      --> <!--
+      }
+
+      -->
+
+  </style>
+
+  <!-- CSS Reset : END -->
+
+  <!-- Progressive Enhancements : BEGIN -->
+  <style>
+
+      .primary {
+          background: #4D009E;
+      }
+
+      .bg_white {
+          background: #ffffff;
+      }
+
+      .bg_light {
+          background: #f7fafa;
+      }
+
+      .bg_black {
+          background: #000000;
+      }
+
+      .bg_dark {
+          background: rgba(0, 0, 0, .8);
+      }
+
+      .email-section {
+          padding: 2.5em;
+      }
+
+      /*BUTTON*/
+      .btn {
+          padding: 10px 15px;
+          display: inline-block;
+      }
+
+      .btn.btn-primary {
+          border-radius: 5px;
+          background: #4D009E;
+          color: #ffffff;
+      }
+
+      .btn.btn-white {
+          border-radius: 5px;
+          background: #ffffff;
+          color: #000000;
+      }
+
+      .btn.btn-white-outline {
+          border-radius: 5px;
+          background: transparent;
+          border: 1px solid #fff;
+          color: #fff;
+      }
+
+      .btn.btn-black-outline {
+          border-radius: 0px;
+          background: transparent;
+          border: 2px solid #000;
+          color: #000;
+          font-weight: 700;
+      }
+
+      .btn-custom {
+          color: rgba(0, 0, 0, .3);
+          text-decoration: underline;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+          font-family: 'Poppins', sans-serif;
+          color: #000000;
+          margin-top: 0;
+          font-weight: 400;
+      }
+
+      body {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 400;
+          font-size: 15px;
+          line-height: 1.8;
+          color: rgba(0, 0, 0, .4);
+      }
+
+      a {
+          color: #17bebb;
+      }
+
+      table {
+      }
+
+      /*LOGO*/
+
+      .logo h1 {
+          margin: 0;
+      }
+
+      .logo h1 a {
+          color: #4D009E;
+          font-size: 24px;
+          font-weight: 700;
+          font-family: 'Poppins', sans-serif;
+      }
+
+      /*HERO*/
+      .hero {
+          position: relative;
+          z-index: 0;
+      }
+
+      .hero .text {
+          color: rgba(0, 0, 0, .3);
+      }
+
+      .hero .text h2 {
+          color: #000;
+          font-size: 34px;
+          margin-bottom: 0;
+          font-weight: 200;
+          line-height: 1.4;
+      }
+
+      .hero .text h3 {
+          font-size: 24px;
+          font-weight: 300;
+      }
+
+      .hero .text h2 span {
+          font-weight: 600;
+          color: #000;
+      }
+
+      .text-author {
+          bordeR: 1px solid rgba(0, 0, 0, .05);
+          max-width: 50%;
+          margin: 0 auto;
+          padding: 2em;
+      }
+
+      .text-author img {
+          border-radius: 50%;
+          padding-bottom: 20px;
+      }
+
+      .text-author h3 {
+          margin-bottom: 0;
+      }
+
+      ul.social {
+          padding: 0;
+      }
+
+      ul.social li {
+          display: inline-block;
+          margin-right: 10px;
+      }
+
+      /*FOOTER*/
+
+      .footer {
+          border-top: 1px solid rgba(0, 0, 0, .05);
+          color: rgba(0, 0, 0, .5);
+      }
+
+      .footer .heading {
+          color: #000;
+          font-size: 20px;
+      }
+
+      .footer ul {
+          margin: 0;
+          padding: 0;
+      }
+
+      .footer ul li {
+          list-style: none;
+          margin-bottom: 10px;
+      }
+
+      .footer ul li a {
+          color: rgba(0, 0, 0, 1);
+      }
+
+
+      @media screen and (max-width: 500px) {
+
+
+      }
+
+
+  </style>
+
+
+</head>
+
+<body style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;" width="100%">
+<center style="width: 100%; background-color: #f1f1f1;">
+  <div
+      style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+  </div>
+  <div class="email-container" style="max-width: 600px; margin: 0 auto;">
+    <!-- BEGIN BODY -->
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;"
+           width="100%">
+      <tr>
+        <td class="bg_white" style="padding: 1em 2.5em 0 2.5em;" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+            <tr>
+              <td class="logo" style="text-align: center;">
+                <h1><a href="#">Soteria</a></h1>
+                <!--                        <img src="{% static 'keys/soteria_logo.png' %}" alt="">-->
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr><!-- end tr -->
+      <tr>
+        <td class="hero bg_white" style="padding: 2em 0 4em 0;" valign="middle">
+          <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+            <tr>
+              <td style="padding: 0 2.5em; text-align: center; padding-bottom: 3em;">
+                <div class="text">
+                  {% if signup %}
+                  <h2>{{fn}}, you have successfully created an account with Soteria and your MemberID
+                    is {{mID}}</h2>
+                  {% endif %}
+                  {% if informed_consent %}
+                  <h2>Informed Consent</h2>
+                  {% endif %}
+                  {% if pwd_reset %}
+                  <h2>Password Reset</h2>
+                  {% endif %}
+                  {% if weekly_task %}
+                  <h2>Tasks Reminder for today</h2>
+                  {% endif %}
+                  {% if genuine_tasks_completed %}
+                  <h2>Congratulations, Genuine Tasks Completed</h2>
+                  {% endif %}
+                  {% if impostor_tasks_completed %}
+                  <h2>Congratulations, Impostor Tasks Completed</h2>
+                  {% endif %}
+                  {% if impostor %}
+                  <h2>{{title}}</h2>
+                  {% endif %}
+                  {% if otp %}
+                  <h2>Verification Required</h2>
+                  {% endif %}
+                </div>
+              </td>
+            </tr>
+            {% if signup %}
+            <tr>
+              <td style="text-align: center;">
+                <div class="text-author">
+                  <!--                            https://cdn4.iconfinder.com/data/icons/alkhazami/32/expand-color-web-22-512.png-->
+                  <img alt=""
+                       src="https://dashboard.snapcraft.io/site_media/appmedia/2020/08/icon_UmBaEG4.png"
+                       style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+                  <h3 class="name">{{fn}}</h3>
+                  <span class="position">Please verify your email address to complete your registration</span>
+                  <p><a class="btn btn-primary" href="{{link}}">Verify Email</a></p>
+                  <!--				           	<p><a href="{{link}}" class="btn-custom">Ignore Request</a></p>-->
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+            {% if pwd_reset %}
+            <tr>
+              <td style="text-align: center;">
+                <div class="text-author">
+                  <img alt=""
+                       src="https://www.kindpng.com/picc/m/200-2005293_lock-password-icon-hd-png-download.png"
+                       style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+                  <h3 class="name">Hi {{fn}},</h3>
+                  <span class="position">You requested to create a new password on Soteria. Kindly click the button below for creating a new password. Please ignore if you did not request for this.</span>
+                  <p><a class="btn btn-primary" href="{{link}}">Create New Password</a></p>
+                  <!--				           	<p><a href="{{link}}" class="btn-custom">Ignore Request</a></p>-->
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+            {% if weekly_task %}
+            <tr>
+              <td style="text-align: center;">
+                <div class="text-author">
+                  <img alt="" src="https://images-na.ssl-images-amazon.com/images/I/71J34fL7XPL.png"
+                       style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+                  <h3 class="name">Hello {{fn}},</h3>
+                  <span class="position">You have completed a total of {{login_attempts}}/100 login attempts and {{AR_attempts}}/20 account recovery attempts so far.
+                                                   <br><br>You have the following pending tasks for today:</span>
+                  <br>
+                  <ul style="text-align: left;">
+                    <li><span class="text">Login attempts: {{login_left}}</span></li>
+                    <li><span class="text">Account Recovery attempts: {{AR_left}}</span></li>
+                  </ul>
+                  <p><a class="btn btn-primary" href="{{link}}">Begin Tasks</a></p>
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+            {% if otp %}
+            <tr>
+              <td style="text-align: center;">
+                <div class="text-author">
+                  <img alt=""
+                       src="https://i.pinimg.com/originals/b1/6d/78/b16d78c806bbbb604a397140e3c0cd34.jpg"
+                       style="width: 100px; max-width: 1000px; height: auto; margin: auto; display: block;">
+                  <h3 class="name">Dear {{fn}},</h3>
+                  <br>
+                  <span class="position">The second half of your verification code is : {{otp2}}. It expires in 10 minutes. Please ignore if you did not request for this.</span>
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+            {% if impostor %}
+            <tr>
+              <td style="text-align: center;">
+                <div class="text-author">
+                  <img alt=""
+                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtTHXLPYh7rugB_txGZHZq45M1gW9BhpfqAg&usqp=CAU"
+                       style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;">
+                  <h3 class="name">Hello {{fn}},<br>{{message}}</h3>
+                  <br>
+                  <table style="text-align: left; width:800px; margin:0 auto;">
+                    <tr>
+                      <td>MemberID</td>
+                      <td>{{ mID }}</td>
+                    </tr>
+                    <tr>
+                      <td>First Name</td>
+                      <td>{{ fn2 }}</td>
+                    </tr>
+                    <tr>
+                      <td>Last Name</td>
+                      <td>{{ ln2 }}</td>
+                    </tr>
+                    <tr>
+                      <td>Date of Birth</td>
+                      <td>{{ dob }}</td>
+                    </tr>
+                    <tr>
+                      <td>Address</td>
+                      <td>{{ address }}</td>
+                    </tr>
+                    <tr>
+                      <td>City</td>
+                      <td>{{ city }}</td>
+                    </tr>
+                    <tr>
+                      <td>State</td>
+                      <td>{{ state }}</td>
+                    </tr>
+                    <tr>
+                      <td>Zip Code</td>
+                      <td>{{ zip }}</td>
+                    </tr>
+                    <tr>
+                      <td>Country</td>
+                      <td>{{ country }}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>{{ email }}</td>
+                    </tr>
+                    <tr>
+                      <td>Phone</td>
+                      <td>{{ phone }}</td>
+                    </tr>
+                    <tr>
+                      <td>Username</td>
+                      <td>{{ username }}</td>
+                    </tr>
+                    <tr>
+                      <td>Password</td>
+                      <td>{{ pwd }}</td>
+                    </tr>
+                  </table>
+                  <p><a class="btn btn-primary" href="{{link}}">Begin Impostor Tasks</a></p>
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+            {% if genuine_tasks_completed %}
+            <tr>
+              <td style="text-align: center;">
+                <div class="text-author">
+                  <img alt="" src="https://www.iconpacks.net/icons/1/free-winner-icon-488-thumb.png"
+                       style="width: 100px; max-width: 1000px; height: auto; margin: auto; display: block;">
+                  <h3 class="name">Dear {{fn}} {{ln}},</h3>
+                  <br>
+                  <span class="position">You have completed the genuine tasks with a total of {{login_attempts}}/100 login attempts and {{AR_attempts}}/20 account recovery attempts. You are now entitled to a payment of $20 for your effort.
+                                                   <br><br>Next step is the impostor tasks. You will be assigned a total of 5 impostors and required to attempt 10 login and 10 account recovery on each of the impostors using their credentials which will be shared with you soon via email. Please look out for the email. You will be compensated with another $15 after completing the impostor tasks. An extra $5 will be awarded if you successfully break into the provided impostor account. Total compensation will be paid after completing all tasks.
+                            <br><br>If you have any question, please email wahabaa@clarkson.edu.</span>
+                  <!--                            <p><a href="{{link}}" class="btn btn-primary">Accept Request</a></p>-->
+                  <!--				           	<p><a href="{{link}}" class="btn-custom">Ignore Request</a></p>-->
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+            {% if impostor_tasks_completed %}
+            <tr>
+              <td style="text-align: center;">
+                <div class="text-author">
+                  <img alt="" src="https://www.iconpacks.net/icons/1/free-winner-icon-488-thumb.png"
+                       style="width: 100px; max-width: 1000px; height: auto; margin: auto; display: block;">
+                  <h3 class="name">Dear {{fn}} {{ln}},</h3>
+                  <br>
+                  <span class="position">You have completed the impostor tasks. You are now entitled to a payment of $15 for your effort.
+                                                   <br><br>Below is a link/button to access a short survey questions about your experience in this study. Please complete the survey. Payment will be processed after the survey is completed.
+                                <br><br>Thank you for your time and contribution.
+                            <br><br>If you have any question, please email wahabaa@clarkson.edu.</span>
+                  <p><a class="btn btn-primary" href="https://forms.gle/bog83ytACnqDiLUFA">Start
+                    Survey</a></p>
+                  <!--				           	<p><a href="{{link}}" class="btn-custom">Ignore Request</a></p>-->
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+
+            {% if informed_consent %}
+            <tr>
+              <td style="text-align: center;">
+                <div class="text-author">
+                  <img alt=""
+                       src="https://i.pinimg.com/originals/a5/4b/bb/a54bbba049cf4d602c627e41787ba99c.png"
+                       style="width: 100px; max-width: 1000px; height: auto; margin: auto; display: block;">
+                  <h3 class="name">Dear {{fn}} {{ln}},</h3>
+                  <br>
+                  <span class="position">This is a confirmation that the purpose of this research has been explained to you and you have been informed of what to expect and your rights, and therefore have agreed to participate in this study.
+                                  This email serves as a record of your consent to participate in this study.<br><br>If you have any question, please email wahabaa@clarkson.edu.</span>
+                  <!--                            <p><a href="{{link}}" class="btn btn-primary">Accept Request</a></p>-->
+                  <!--				           	<p><a href="{{link}}" class="btn-custom">Ignore Request</a></p>-->
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+          </table>
+        </td>
+      </tr><!-- end tr -->
+      <!-- 1 Column Text + Button : END -->
+    </table>
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;"
+           width="100%">
+      <tr>
+        <td class="bg_light footer email-section" valign="middle">
+          <table>
+            <tr>
+              <td style="padding-top: 20px;" valign="top" width="33.333%">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                  <tr>
+                    <td style="text-align: left; padding-right: 10px;">
+                      <h3 class="heading">About</h3>
+                      <p>User Study of a Web-based Account Management System</p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td style="padding-top: 20px;" valign="top" width="33.333%">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                  <tr>
+                    <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
+                      <h3 class="heading">Contact Info</h3>
+                      <ul>
+                        <li><span class="text">8 Clarkson Avenue, Potsdam, NY, USA. 13699</span>
+                        </li>
+                        <!--                        <li><span class="text">+2 392 3929 210</span></a></li>-->
+                      </ul>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td style="padding-top: 20px;" valign="top" width="33.333%">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                  <tr>
+                    <td style="text-align: left; padding-left: 10px;">
+                      <h3 class="heading">Useful Links</h3>
+                      <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Forgot password</a></li>
+                      </ul>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr><!-- end: tr -->
+      <tr>
+        <td class="bg_light" style="text-align: center;">
+          <p>No longer want to receive these email? You can <a href="#" style="color: rgba(0,0,0,.8);">Unsubscribe
+            here</a></p>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+</center>
+</body>
+</html>

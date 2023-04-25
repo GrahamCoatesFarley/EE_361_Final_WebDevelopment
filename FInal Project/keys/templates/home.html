@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <meta content="" name="description">
+  <meta content="" name="author">
+
+  <title>Soteria</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/home-page.css' %}" rel="stylesheet">
+
+</head>
+
+<body onmouseenter="mousee('mouse_enter', 'body', 'body', 'home')"
+  onmouseleave="mousee('mouse_leave', 'body', 'body', 'home')">
+  <div class="container-fluid">
+    <div class="row no-gutter">
+
+      <div class="col-md-8 col-lg-6">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
+                <header>
+                  <div class="text-center mb-5">
+                    <div class="logo">
+                      <a href="javascript:void(0);">
+                        <img alt="Aetan Logo" class="img-responsive"
+                          onmouseenter="mousee('mouse_enter', 'image', 'logo', 'home')"
+                          onmouseleave="mousee('mouse_leave', 'image', 'logo', 'home')"
+                          src="{% static 'keys/soteria_logo.png' %}" title="Aetan Logo">
+                      </a>
+                    </div>
+                    <div class="project-name" onmouseenter="mousee('mouse_enter', 'text', 'logo_name', 'home')"
+                      onmouseleave="mousee('mouse_leave', 'text', 'logo_name', 'home')">CITeR
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="welcome-text">
+                        {% if error %} <br>
+                        <p class="text-center" style="color: #cc0000">{{error}}</p>
+                        {% endif %}
+                        {% if success %} <br>
+                        <p class="text-center" style="color: #018c01">{{success}}</p>
+                        {% endif %}
+                        {% if message %} <br>
+                        <p class="text-center">{{message}}</p>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  <!--This is for the welcome message-->
+                  <div style="display:none;">
+                    <button class="btn btn-primary" data-target="#welcome" data-toggle="modal" id="loadmodal"
+                      type="button"></button>
+                  </div>
+                  {% if showWelcomeMessage %}
+                  <script>
+                    window.onload = function () {
+                      document.getElementById('loadmodal').click();
+                    }
+                  </script>
+                  {% endif %}
+                </header>
+
+                {% if enterOTP %}
+                <h3 class="login-heading mb-4" onmouseenter="mousee('mouse_enter', 'text', 'title', 'home')"
+                  onmouseleave="mousee('mouse_leave', 'text', 'title', 'home')">Verification Code</h3>
+                <form action="#" autocomplete="off" class="form-horizontal loginForm" method="POST" name="loginForm"
+                  onmouseenter="mousee('mouse_enter', 'form', 'otp_validation', 'home')"
+                  onmouseleave="mousee('mouse_leave', 'form', 'otp_validation', 'home')">
+                  {% csrf_token %}
+                  {% if split %}
+                  <p>Enter the first half (via phone) and second half (via email) of the OTP here WITHOUT
+                    space.</p>
+                  {% endif %}
+                  <div class="form-label-group">
+                    <input autofocus class="form-control" id="otp" name="otp"
+                      onmouseenter="mousee('mouse_enter', 'input', 'otp', 'home')"
+                      onmouseleave="mousee('mouse_leave', 'input', 'otp', 'home')" placeholder="Enter OTP" required
+                      type="text">
+                    <label for="otp" onmouseenter="mousee('mouse_enter', 'label', 'otp', 'home')"
+                      onmouseleave="mousee('mouse_leave', 'label', 'otp', 'home')">Enter
+                      OTP</label>
+                  </div>
+                  <div>
+                    <a class="btn btn-sm btn-primary btn-block btn-login mb-1" href="../../"
+                      onmouseenter="mousee('mouse_enter', 'button', 'back', 'home')"
+                      onmouseleave="mousee('mouse_leave', 'button', 'back', 'home')" title="back login">Back to
+                      Login</a>
+                    <button class="btn btn-sm btn-primary btn-block btn-login mb-1"
+                      onmouseenter="mousee('mouse_enter', 'button', 'validate', 'home')"
+                      onmouseleave="mousee('mouse_leave', 'button', 'validate', 'home')" type="submit">Validate
+                    </button>
+                  </div>
+
+                  <ul class="list-inline text-center mt-4">
+                    <li class="list-inline-item mr-4"><a href="soteria/signup1" style="color: #4D009E">Sign
+                        Up</a></li>
+                    <li class="list-inline-item mr-4"><a href="soteria/forgotpwd1" style="color: #4D009E">Forgot User
+                        Password&#63;</a>
+                    </li>
+                  </ul>
+                </form>
+                {% else %}
+                {% if tasksleft == -1 %}
+                <h3 class="login-heading mb-4" onmouseenter="mousee('mouse_enter', 'text', 'title', 'home')"
+                  onmouseleave="mousee('mouse_leave', 'text', 'title', 'home')">Welcome to Soteria</h3>
+                {% endif %}
+
+                <form action="#" autocomplete="off" class="form-horizontal loginForm" method="POST" name="loginForm"
+                  onmouseenter="mousee('mouse_enter', 'form', 'login', 'home')"
+                  onmouseleave="mousee('mouse_leave', 'form', 'login', 'home')">
+                  {% csrf_token %}
+                  <div class="form-label-group" ondrop="return false" onpaste="return false;">
+                    <input autofocus class="form-control" id="userName" name="userName"
+                      onkeydown="myFunction2(event, 0, 'userName')" onkeyup="myFunction2(event, 1, 'userName')"
+                      onmouseenter="mousee('mouse_enter', 'input', 'username', 'home')"
+                      onmouseleave="mousee('mouse_leave', 'input', 'username', 'home')" placeholder="User name" required
+                      type="text">
+                    <label for="userName" onmouseenter="mousee('mouse_enter', 'label', 'username', 'home')"
+                      onmouseleave="mousee('mouse_leave', 'label', 'username', 'home')">User
+                      name</label>
+                  </div>
+
+                  <div class="form-label-group" ondrop="return false" onpaste="return false;">
+                    <input class="form-control" id="password" name="password"
+                      onkeydown="myFunction2(event, 0, 'password')" onkeyup="myFunction2(event, 1, 'password')"
+                      onmouseenter="mousee('mouse_enter', 'input', 'password', 'home')"
+                      onmouseleave="mousee('mouse_leave', 'input', 'password', 'home')" placeholder="Password" required
+                      type="password">
+                    <label for="password" onmouseenter="mousee('mouse_enter', 'label', 'password', 'home')"
+                      onmouseleave="mousee('mouse_leave', 'label', 'password', 'home')">Password</label>
+                  </div>
+
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" id="customCheck1"
+                      onmouseenter="mousee('mouse_enter', 'checkbox', 'checkbox', 'home')"
+                      onmouseleave="mousee('mouse_leave', 'checkbox', 'checkbox', 'home')" type="checkbox">
+                    <label class="custom-control-label" for="customCheck1"
+                      onmouseenter="mousee('mouse_enter', 'label', 'checkbox', 'home')"
+                      onmouseleave="mousee('mouse_leave', 'label', 'checkbox', 'home')">Remember
+                      password</label>
+                  </div>
+                  <button class="btn btn-lg btn-primary btn-block btn-login mb-2"
+                    onmouseenter="mousee('mouse_enter', 'button', 'signin', 'home')"
+                    onmouseleave="mousee('mouse_leave', 'button', 'signin', 'home')" type="submit">Secure Login
+                  </button>
+                  <ul class="list-inline text-center mt-4">
+                    <li class="list-inline-item mr-4"><a href="soteria/signup1" style="color: #4D009E">Sign Up</a>
+                    </li>
+                    <li class="list-inline-item mr-4"><a href="soteria/forgotpwd1" style="color: #4D009E">Forgot User
+                        Password&#63;</a>
+                    </li>
+                  </ul>
+                </form>
+                {% endif %}
+
+              </div>
+            </div>
+
+
+            <footer>
+              <div class=" mt-5 text-center">
+                <div class="mt-5">
+                  <img alt="clarkson" src="{% static 'keys/clarkson_logo.jpg' %}" title="clarkson" />
+                  <p class="col-sm-12 copyright-text">Copyright <br>&copy; 2020-2022 soteria Inc.</p>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    </div>
+  </div>
+
+
+  <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" data-backdrop="static"
+    data-keyboard="false" id="welcome" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div>
+            <h6 class="text-left" style="font-weight: bold;">Type your (not anyone else's) legal first name and
+              last name.</h6>
+            <br>
+            <input autocomplete="off" class="form-field" id="fullname" name="fullname"
+              placeholder="YOUR first name and last name" required size="40" type="text">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" id="resumeSession" name="resumeSession" type="button">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:none;">
+    <button class="btn btn-primary" data-target="#giftCard" data-toggle="modal" id="giftcardmodal"
+      type="button"></button>
+  </div>
+
+
+  <script type="text/javascript">
+    const check = document.querySelector('#resumeSession');
+    check.onclick = function () {
+      var inputVal = document.getElementById("fullname").value;
+      if (inputVal.length > 1) {
+        $('#welcome').modal('hide');
+        var URL = "{% url 'soteria:update_session' %}"
+        var data = inputVal;
+        $.post(URL, data);
+        <!--            location.reload();-->
+      }
+    };
+  </script>
+
+  <script src="{% static 'keys/js/jquery.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'keys/js/constants.js' %}" type="text/javascript"></script>
+  <script src="{% static 'keys/js/formvalidation.js' %}" type="text/javascript"></script>
+  <script src="{% static 'keys/js/logger.js' %}" type="text/javascript"></script>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

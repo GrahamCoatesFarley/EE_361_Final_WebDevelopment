@@ -1,0 +1,15 @@
+sudo yum install mysql-server
+OR
+$ wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm
+$ sudo yum localinstall mysql57-community-release-el7-8.noarch.rpm
+$ sudo yum install mysql-community-server 
+
+sudo /sbin/service mysqld start
+sudo /usr/bin/mysql_secure_installation
+mysql -u root -p
+GRANT ALL ON *.* to root@'%' IDENTIFIED BY 'test';
+
+update user set authentication_string=PASSWORD("serlclarkson") where User='root';
+
+#Create database
+GRANT ALL PRIVILEGES ON *.* TO 'clarkson'@'localhost' IDENTIFIED BY 'clarksonaetna';

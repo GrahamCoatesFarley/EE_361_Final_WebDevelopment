@@ -1,0 +1,25 @@
+version: '3.*'
+
+services:
+  mysql:
+    image: mysql:8
+    hostname: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=${DATABASE_NAME}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+      - MYSQL_ROOT_PASSWORD=${DATABASE_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "exit | mysql -h localhost -P 3306 -u root -p$$MYSQL_ROOT_PASSWORD" ]
+      interval: 10s
+      timeout: 20s
+      retries: 30
+  web:
+    build: .
+    ports:
+      - '8000:8000'
+    depends_on:
+      mysql:
+        condition: service_healthy
+
