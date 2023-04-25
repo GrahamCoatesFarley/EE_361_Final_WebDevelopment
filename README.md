@@ -8,7 +8,7 @@ Task 3: Wyatt,
 Status: Complete
 
 Task 4: Andrew
-Status:
+Status: Complete
 
 Task 5: James,
 Status:
