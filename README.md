@@ -1,5 +1,3 @@
-This 
-
 Task 1: James, Andrew
 Status: Complete
 
