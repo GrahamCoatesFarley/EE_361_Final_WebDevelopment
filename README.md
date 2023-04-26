@@ -1,3 +1,5 @@
+This 
+
 Task 1: James, Andrew
 Status: Complete
 
@@ -14,7 +16,7 @@ Task 5: James,
 Status:
 
 Presentation: Group, 
-Status: 
+Status: Complete
 
 Description: Group, 
-Status:
+Status: Complete
